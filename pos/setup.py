@@ -5,13 +5,13 @@ package_name = 'pos'
 setup(
     name=package_name,
     version='0.0.0',
-    packages=find_packages(exclude=['test']),
+    packages=find_packages(),
     data_files=[
         ('share/ament_index/resource_index/packages',
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
     ],
-    install_requires=['setuptools'],
+    install_requires=['setuptools', 'mysql-connector-python', 'pyyaml'],
     zip_safe=True,
     maintainer='olin',
     maintainer_email='olin.goog@gmail.com',
