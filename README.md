@@ -14,3 +14,4 @@ A virtual POS for retail, built in ROS.
 
 ### nota bene
 To use a Python package through `pip` with `colcon`, just add the pip package name to the `install_requires` line in `setup.py`. This is used in the case of mySQL. (Maybe there's a better option.)
+
