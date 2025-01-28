@@ -5,6 +5,8 @@ from rclpy.node import Node
 
 from pos import gui
 from pos import connector as c
+# from pos import llmi
+
 
 import threading
 
@@ -29,22 +31,19 @@ class MinimalService(Node):
             "card": None,
         }
         
-        
-        self.lock = threading.Condition()
+
+
         s = threading.Thread(target=start_gui, args=[self.state])
         s.start()
         print("GUI started from service node.")
         
-
+        # DATABASE
         self.db = c.Database() #Already exists
         self.db.drop_table()
         self.db.create_price_lookup_table()
         self.db.insert_data()
         
-
-
-        
-
+      
          
     def accept_card_callback(self, request, response):
         self.get_logger().info('Incoming request: ' + str(request.num) + ", " + request.name)

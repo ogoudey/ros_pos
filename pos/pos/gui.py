@@ -2,10 +2,11 @@ import tkinter as tk
 import threading
 import time
 
-                
+
+            
 class GUI:
-    def __init__(self, pos_state):
-        self.pressed = False
+    def __init__(self, pos_state, auto=False):
+        self.pressed = False # redundant
         self.pos_state = pos_state
         
         
@@ -28,47 +29,35 @@ class GUI:
         
         self.total_price = tk.Label(self.window)
         self.total_price.pack()
-        
-        # Database
-        
-        
-        
-        
-        
-        
-        
 
-
-        # Start your custom mainloop
-        self.my_mainloop(pos_state)
-
+            
+        self.mainloop(pos_state)
+        
         self.window.mainloop()
         
-        """
-        d = threading.Thread(target=daemon, args=[pos_state, self.items, items, ring], daemon=True)
-        d.start() 
-        """  
-            
+
+        
+        
 
         
             
-    def my_mainloop(self, pos_state):
+    def mainloop(self, pos_state):
         self.card.config(text="Card #: " + str(pos_state["card"]))
         self.items.config(text="Items: " + str(pos_state["items"]))
         self.prices.config(text="Prices: " + str(pos_state["prices"]))
         self.total_price.config(text="Total price: " + str(sum(pos_state["prices"])))
         
-        
-        
+
         if self.pressed and pos_state["card"]:  # Assuming its "accepted"
             print("Sale.")
             pos_state["items"] = []
             pos_state["prices"] = []
             pos_state["card"] = None
+            # CHANGE BUTTON TODO
 
             
         # Schedule the next iteration after a delay
-        self.window.after(100, self.my_mainloop, pos_state)
+        self.window.after(100, self.mainloop, pos_state)
 
         
     

@@ -12,8 +12,10 @@ find_package(rosidl_default_generators REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Card.msg"
+  "msg/MockAction.msg"
   "srv/AcceptCard.srv"
   "srv/AddtoPurchase.srv"
+  "srv/Interaction.srv"
 )
 
 
